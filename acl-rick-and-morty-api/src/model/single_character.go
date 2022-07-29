@@ -10,7 +10,7 @@ type SingleCharacter struct {
 	Origin   origin   `json:"origin"`
 	Location location `json:"location"`
 	Image    string   `json:"image"`
-	Episodes []string `json:"episodes"`
+	Episode  []string `json:"episode"`
 	Url      string   `json:"url"`
 	Created  string   `json:"created"`
 }

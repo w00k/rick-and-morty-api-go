@@ -5,16 +5,15 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"strconv"
 
 	"github.com/w00k/rick-and-morty-api-go/acl-rick-and-morty-api/src/model"
 )
 
-const endpointSingleCharacter string = "https://rickandmortyapi.com/documentation/#get-a-single-character"
+const endpointSingleCharacter string = "https://rickandmortyapi.com/api/character"
 
-func CallSingleCharacter(characterId int) (data model.SingleCharacter, er error) {
+func CallSingleCharacter(characterId string) (data model.SingleCharacter, er error) {
 	//var data model.SingleCharacter
-	response, err := http.Get(endpointSingleCharacter + "/" + strconv.Itoa(characterId))
+	response, err := http.Get(endpointSingleCharacter + "/" + characterId)
 
 	//call api
 	if err != nil {
@@ -30,7 +29,7 @@ func CallSingleCharacter(characterId int) (data model.SingleCharacter, er error)
 		er = err
 	}
 	json.Unmarshal(body, &data)
-	log.Println("CallSingleCharacter - body : ", data)
+	//log.Println("CallSingleCharacter - body : ", data)
 
 	return
 }
