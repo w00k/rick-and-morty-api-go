@@ -8,11 +8,10 @@ import (
 )
 
 func GetSingleCharacter(c *gin.Context) {
-	singleCharacter, err := service.CallSingleCharacter(c.Param("id"))
-	if err != nil {
-		c.JSON(http.StatusBadRequest, singleCharacter)
+	singleCharacter, exception := service.CallSingleCharacter(c.Param("id"))
+	if exception.Status != 0 {
+		c.JSON(http.StatusBadRequest, exception)
 		return
 	}
-
 	c.JSON(http.StatusOK, singleCharacter)
 }

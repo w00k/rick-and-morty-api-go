@@ -7,8 +7,8 @@ type SingleCharacter struct {
 	Species  string   `json:"species"`
 	Type     string   `json:"type"`
 	Gender   string   `json:"gender"`
-	Origin   origin   `json:"origin"`
-	Location location `json:"location"`
+	Origin   Origin   `json:"origin"`
+	Location Location `json:"location"`
 	Image    string   `json:"image"`
 	Episode  []string `json:"episode"`
 	Url      string   `json:"url"`

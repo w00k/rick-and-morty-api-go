@@ -1,6 +1,6 @@
 package model
 
-type origin struct {
+type Origin struct {
 	Name string `json:"name"`
 	Url  string `json:"url"`
 }

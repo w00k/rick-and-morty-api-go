@@ -8,5 +8,7 @@ import (
 func main() {
 	r := gin.Default()
 	r.GET("/single-character/:id", controller.GetSingleCharacter)
+	r.GET("/single-location/:id", controller.GetSingleLocation)
+
 	r.Run(":8080")
 }
