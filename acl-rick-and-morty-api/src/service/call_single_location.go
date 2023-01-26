@@ -12,7 +12,7 @@ const endpointSingleLocation string = "https://rickandmortyapi.com/api/location"
 func CallSingleLocation(locationId string) (data model.Location, exception model.Exception) {
 	response, err := http.Get(endpointSingleLocation + "/" + locationId)
 
-	body, exception := exceptionHandler.HttpResponseHandler(response, err, "CallSingleCharacter")
+	body, exception := exceptionHandler.HttpResponseHandler(response, err, "CallSingleLocation")
 
 	defer response.Body.Close()
 
