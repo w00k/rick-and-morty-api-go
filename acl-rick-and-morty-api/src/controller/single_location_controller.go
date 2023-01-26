@@ -4,8 +4,9 @@ import (
 	"log"
 	"net/http"
 
+	"w00k/rick-and-morty-api-go/acl-rick-and-morty-api/src/service"
+
 	"github.com/gin-gonic/gin"
-	"github.com/w00k/rick-and-morty-api-go/acl-rick-and-morty-api/src/service"
 )
 
 func GetSingleLocation(c *gin.Context) {

@@ -1,8 +1,9 @@
 package main
 
 import (
+	controller "w00k/rick-and-morty-api-go/acl-rick-and-morty-api/src/controller"
+
 	"github.com/gin-gonic/gin"
-	controller "github.com/w00k/rick-and-morty-api-go/acl-rick-and-morty-api/src/controller"
 )
 
 func main() {

@@ -3,8 +3,9 @@ package controller
 import (
 	"net/http"
 
+	service "w00k/rick-and-morty-api-go/acl-rick-and-morty-api/src/service"
+
 	"github.com/gin-gonic/gin"
-	service "github.com/w00k/rick-and-morty-api-go/acl-rick-and-morty-api/src/service"
 )
 
 func GetSingleCharacter(c *gin.Context) {

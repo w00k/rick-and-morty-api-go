@@ -1,4 +1,4 @@
-package exception
+package model
 
 type Exception struct {
 	Status  int    `json:"status"`
