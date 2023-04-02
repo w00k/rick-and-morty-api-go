@@ -1,0 +1,8 @@
+package model
+
+type Origin struct {
+	Name      string
+	Url       string
+	Dimension string
+	Resident  []string
+}

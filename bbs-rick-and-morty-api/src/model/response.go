@@ -1,11 +1,11 @@
 package model
 
 type Response struct {
-	id           int    `json:"id"`
-	name         string `json:"name"`
-	status       string `json:"status"`
-	species      string `json:"species"`
-	responseType string `json:"type"`
-	episodeCount int    `json:"episodie_count"`
-	origin       Origin `json:"origin"`
+	Id           int    `json:"id"`
+	Name         string `json:"name"`
+	Status       string `json:"status"`
+	Species      string `json:"species"`
+	ResponseType string `json:"type"`
+	EpisodeCount int    `json:"episode_count"`
+	MyOrigin     Origin `json:"origin"`
 }

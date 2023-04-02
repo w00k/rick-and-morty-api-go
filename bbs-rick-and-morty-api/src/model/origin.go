@@ -1,8 +1,8 @@
 package model
 
 type Origin struct {
-	name      string   `json:"name"`
-	url       string   `json:"url"`
-	dimension string   `json:"dimension"`
-	resident  []string `json:"resident"`
+	Name      string   `json:"name"`
+	Url       string   `json:"url"`
+	Dimension string   `json:"dimension"`
+	Resident  []string `json:"residents"`
 }
