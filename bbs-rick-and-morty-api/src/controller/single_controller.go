@@ -21,17 +21,14 @@ func SingleController(c *gin.Context) {
 
 	locationId := strconv.Itoa(singleCharacter.Location.Id)
 
-	if locationId == "0" {
-		log.Println("locationId not number")
-	}
-
 	location, err := service.CallSingleLocation(locationId)
 
-	if err.Status != 200 {
+	if err.Status != 0 {
 		log.Println("Location Service Error")
 		log.Println(location)
 		log.Println(err)
 		c.JSON(http.StatusInternalServerError, err)
+		return
 	}
 
 	response := buildResponse(singleCharacter, location)
@@ -50,6 +47,7 @@ func buildResponse(singleCharacter model.SingleCharacter, location model.Locatio
 	response.Id = singleCharacter.Id
 	response.Name = singleCharacter.Name
 	response.Status = singleCharacter.Status
+	response.Species = singleCharacter.Species
 	response.ResponseType = singleCharacter.Type
 	response.EpisodeCount = episodeCount
 	response.MyOrigin.Name = singleCharacter.Origin.Name
