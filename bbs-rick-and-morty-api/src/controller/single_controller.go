@@ -3,7 +3,6 @@ package controller
 import (
 	"log"
 	"net/http"
-	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"github.com/w00k/rick-and-morty-api-go/bbs-rick-and-morty-api/src/model"
@@ -19,14 +18,14 @@ func SingleController(c *gin.Context) {
 		return
 	}
 
-	locationId := strconv.Itoa(singleCharacter.Location.Id)
+	locationId := getLocationId(singleCharacter.Location.Url)
+	log.Println("Locarion Id: ", locationId)
 
 	location, err := service.CallSingleLocation(locationId)
 
 	if err.Status != 0 {
 		log.Println("Location Service Error")
 		log.Println(location)
-		log.Println(err)
 		c.JSON(http.StatusInternalServerError, err)
 		return
 	}
@@ -34,6 +33,18 @@ func SingleController(c *gin.Context) {
 	response := buildResponse(singleCharacter, location)
 
 	c.JSON(http.StatusOK, response)
+}
+
+func getLocationId(url string) string {
+
+	indexBase := 41 // https://rickandmortyapi.com/api/location/3 len 42 before 3
+	endBase := len(url)
+
+	log.Printf("index: %d \nend: %d \n", indexBase, endBase)
+	if endBase > indexBase {
+		return url[indexBase:endBase]
+	}
+	return "0"
 }
 
 func buildResponse(singleCharacter model.SingleCharacter, location model.Location) (response model.Response) {
@@ -52,7 +63,7 @@ func buildResponse(singleCharacter model.SingleCharacter, location model.Locatio
 	response.EpisodeCount = episodeCount
 	response.MyOrigin.Name = singleCharacter.Origin.Name
 	response.MyOrigin.Url = singleCharacter.Origin.Url
-	response.MyOrigin.Dimension = singleCharacter.Origin.Dimension
+	response.MyOrigin.Dimension = location.Dimension
 	response.MyOrigin.Resident = location.Residents
 
 	return
